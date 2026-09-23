@@ -19,7 +19,7 @@ struct Task
   Action action;
 
   Task(std::fstream &&fStream, Action act, std::string fPath)
-      : f_stream(std::move(fStream)), action(act), filePath(fPath) {}
+      : filePath(std::move(fPath)), f_stream(std::move(fStream)), action(act) {}
 
   std::string toString()
   {
@@ -38,7 +38,7 @@ struct Task
     {
       Action action = (actionStr == "ENCRYPT") ? Action::ENCRYPT : Action::DECRYPT;
       IO io(filePath);
-      std::fstream f_stream = std::move(io.getFileStream());
+      std::fstream f_stream = io.getFileStream();
       if (f_stream.is_open())
       {
         return Task(std::move(f_stream), action, filePath);

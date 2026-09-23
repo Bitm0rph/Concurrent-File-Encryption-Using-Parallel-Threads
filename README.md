@@ -29,9 +29,18 @@ To build and run this project, you will need:
 3. **Compile the engine:**
    ```bash
    make
+   ```
+
+   `std::filesystem` requires C++17. Do not compile `main.cpp` by itself with
+   `g++ main.cpp`; that skips the required C++17 flag and the other project
+   source files.
    
 ## Usage
-1. Run the executable: ./encrypt_app
+1. Run the executable:
+   ```bash
+   make run
+   ```
+   You can also run `./encrypt_app` after a successful `make`.
 2. Follow the on-screen prompts:
 Directory Path: Provide the relative or absolute path to the folder containing the files you wish to process (e.g., Test_Files).
 Action: Type ENCRYPT to secure the files, or DECRYPT to restore them to their original state.

@@ -1,12 +1,12 @@
 #include <iostream>
 #include <filesystem>
-#include "Src/App/Processes/ProcessManagement.hpp"
-#include "Src/App/Processes/Task.hpp"
-#include "Src/App/FileHandling/IO.hpp"
+#include "src/App/Processes/ProcessManagement.hpp"
+#include "src/App/Processes/Task.hpp"
+#include "src/App/FileHandling/IO.hpp"
 #include <string>
 #include <exception>
 
-int main(int argc, char *argv[])
+int main()
 {
   std::string directory;
   std::string action;
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         {
           std::string filePath = entry.path().string();
           IO io(filePath);
-          std::fstream f_stream = std::move(io.getFileStream());
+          std::fstream f_stream = io.getFileStream();
 
           if (f_stream.is_open())
           {
